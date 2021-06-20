@@ -10,13 +10,21 @@ pwd：phun
 
 # Environment
 python3
+
 CUDA 10.1
+
 pytorch 18.1
+
 tensorflow 1.4.1 & keras 2.3.0 (just for data augmentation)
+
 open-cv2
+
 segmentation_models_pytorch
+
 skimage
+
 albumentations
+
 pydicom
 
 # How to train
