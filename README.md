@@ -8,4 +8,20 @@ Validation data ISMRM2012-challenge https://www.ismrm.org/workshops/FatWater12/d
 Pretrain_weight:https://pan.baidu.com/s/18wr-pRAWeKpT1T_hAihMNQ 
 pwd：phun 
 
-comming soon
+# Environment
+python3
+CUDA 10.1
+pytorch 18.1
+tensorflow 1.4.1 & keras 2.3.0 (just for data augmentation)
+open-cv2
+segmentation_models_pytorch
+skimage
+albumentations
+pydicom
+
+# How to train
+1.prepare train/valid data
+2.python train-test.py
+
+# How to test
+python just-test.py
