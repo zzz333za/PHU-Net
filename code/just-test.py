@@ -347,7 +347,8 @@ va=10
 
   
 #torch.save(model,'./model/newtor2.pth')  
-model=torch.load('./model/newtor2.pth')
+#model=torch.load('./model/newtor2.pth')
+model=torch.load('./model/tor221.pth')
 from tor_pros import pro as pro1
 from tor_pro001s import pro
 from scipy.io import loadmat,savemat
