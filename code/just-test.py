@@ -81,7 +81,7 @@ model=torch.load('./model/tor221.pth')
 from scipy.io import loadmat,savemat
 n=9 
     
-xi,xj,yi,yj=nm
+width=256
 s='s'+str(n)
 path='./ISMRM2012/'+s+'.mat'
 md=loadmat(path)
