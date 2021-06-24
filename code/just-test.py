@@ -69,7 +69,10 @@ batch_size =48
 os.environ['CUDA_VISIBLE_DEVICES']='0，1' 
 device = torch.device("cuda:0")
 
-
+transform_test= Compose([#Resize(width,width),#CenterCrop(200, 200),
+                         #Resize(224, 224),
+    ToTensor()
+])
   
 #torch.save(model,'./model/newtor2.pth')  
 #model=torch.load('./model/newtor2.pth')
