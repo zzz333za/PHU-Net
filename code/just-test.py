@@ -74,8 +74,7 @@ device = torch.device("cuda:0")
 #torch.save(model,'./model/newtor2.pth')  
 #model=torch.load('./model/newtor2.pth')
 model=torch.load('./model/tor221.pth')
-from tor_pros import pro as pro1
-from tor_pro001s import pro
+
 from scipy.io import loadmat,savemat
 n=9 
     
@@ -96,8 +95,7 @@ ma=np.angle(mf)
 #ma[np.abs(ff)<0.05*0.95*np.abs(ff).max()]=0
 #ma=ma*mask
 j=1
-if n==15:
-    j=2
+
 mm=ma[:,:,j]
 mask=mask[:,:,j]
 plt.imshow(mm,cmap='gray')
@@ -119,27 +117,20 @@ img=img/(2*np.pi)
 augmented =transform_test(image=img)
 timg = augmented['image']
 
-temp= pro1(timg,3,5,5,3,xi/10,yi/10)
-timg = pro(timg,3,5,5,3,xj/10,yj/10)
+temp= pro1(timg,3,5,5,3)
+timg = pro(timg,3,5,5,3)
 timg=torch.cat([timg,temp[1:]],dim=0)
 timg=timg.reshape([1,5,256,256]).to(device, dtype=torch.float)
-#img=np.round(img*12)/12
+
 with torch.no_grad():
-    c=model(timg)#.cpu().numpy().squeeze()
-    c=c[:,0]#+torch.tanh(c[:,1])
+    c=model(timg)
+    c=c[:,0]
     c=c.cpu().numpy().squeeze()
     c[img.squeeze()==0]=0
 #c=ac[0]
 plt.imshow(img.squeeze(),cmap='gray')
 plt.imshow(c.squeeze(),cmap='gray')
-if '.' in str(yj):
-    yj=int(yj*10)
+
 plt.imshow(mask*(np.round(c.squeeze()-img.squeeze())+img.squeeze())[(256-a)//2:(256-a)//2+a,(256-b)//2:(256-b)//2+b],cmap='gray')
    
-plt.imshow(np.floor(c.squeeze()-img.squeeze())+img.squeeze(),cmap='gray')
-plt.imshow(np.round(c.squeeze()-img.squeeze()),cmap='gray')
-plt.imshow((timg.squeeze().cpu()[0]).squeeze(),cmap='gray')
-plt.imshow((timg.squeeze().cpu()[1]).squeeze(),cmap='gray')
-plt.imshow((np.round(c[0])-np.round(c[1])+img)[0,:,:,0],cmap='gray')    
-
 
